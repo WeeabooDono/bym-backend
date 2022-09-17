@@ -1,0 +1,10 @@
+databaseChangeLog:
+  - changeSet:
+      id: "[12/09/2022] [bym] insert into ==> mangas"
+      author: "WEEABOODONO"
+      comment: "[12/09/2022] [bym] insert into ==> mangas"
+      changes:
+        - sqlFile:
+            relativeToChangelogFile: true
+            stripComments: true
+            path: "sql/mangas.sql"

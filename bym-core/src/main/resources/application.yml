@@ -1,0 +1,10 @@
+spring:
+  jpa:
+    database: postgresql
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: postgres
+    url: jdbc:postgresql://localhost:5432/bym
+#  main:
+#    allow-bean-definition-overriding: true

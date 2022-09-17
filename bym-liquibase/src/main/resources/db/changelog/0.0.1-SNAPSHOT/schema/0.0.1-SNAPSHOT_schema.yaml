@@ -1,0 +1,23 @@
+databaseChangeLog:
+  - changeSet:
+      id: "[12/09/2022] [bym] create table Mangas"
+      author: "WEEABOODONO"
+      comment: "[12/09/2022] [bym] create table Mangas"
+      changes:
+        - createTable:
+            tableName: "mangas"
+            columns:
+              - column:
+                  name: "id"
+                  autoIncrement: true
+                  type: "SERIAL"
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: "mangas_pk"
+              - column:
+                  name: "title"
+                  type: "VARCHAR(500)"
+              - column:
+                  name: "entity_version"
+                  type: "INT"
+                  defaultValue: "0"

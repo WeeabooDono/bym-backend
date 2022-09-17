@@ -1,0 +1,17 @@
+INSERT INTO MANGAS (entity_version, title)
+VALUES (0, 'test 1'),
+       (0, 'test 2'),
+       (0, 'test 3'),
+       (0, 'test 4'),
+       (0, 'test 5'),
+       (0, 'test 6'),
+       (0, 'test 7'),
+       (0, 'test 8'),
+       (0, 'test 9'),
+       (0, 'test 10'),
+       (0, 'test 11'),
+       (0, 'test 12'),
+       (0, 'test 13'),
+       (0, 'test 14'),
+       (0, 'test 15'),
+       (0, 'test 16');

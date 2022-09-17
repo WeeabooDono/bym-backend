@@ -1,0 +1,10 @@
+databaseChangeLog:
+  - changeSet:
+      id: "[12/09/2022] [bym] unique constraint mangas ==> title"
+      author: "WEEABOODONO"
+      comment: "[12/09/2022] [bym] unique constraint mangas ==> title"
+      changes:
+        - addUniqueConstraint:
+            tableName: "mangas"
+            columnNames: "title"
+            constraintName: "mangas_unique_title"

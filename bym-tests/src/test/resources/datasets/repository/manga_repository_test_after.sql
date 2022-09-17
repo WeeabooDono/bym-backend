@@ -1,0 +1,1 @@
+truncate table mangas restart identity;

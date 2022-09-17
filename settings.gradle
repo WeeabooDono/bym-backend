@@ -1,0 +1,5 @@
+rootProject.name = 'bym-parent'
+include 'bym-webapp'
+include 'bym-liquibase'
+include 'bym-tests'
+include 'bym-core'

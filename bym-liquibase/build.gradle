@@ -1,0 +1,18 @@
+plugins {
+    id 'java'
+}
+
+group 'com.wd.bym.liquibase'
+version '0.0.1-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    set('postgresqlVersion', '42.5.0')
+}
+
+dependencies {
+    runtimeOnly "org.postgresql:postgresql:${postgresqlVersion}"
+}

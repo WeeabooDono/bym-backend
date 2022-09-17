@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: BookmarkYourManga
+  jpa:
+    database: postgresql
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: postgres
+    url: jdbc:postgresql://localhost:5432/bym
+  # To allow liquibase configuration overriding in test context
+  main:
+    allow-bean-definition-overriding: true
+server:
+  port: 8080
+  servlet:
+    context-path: /bym
+logging:
+  pattern:
+    console: "%clr(%d){cyan} [%clr(%p)] %clr(%c){magenta} - %m%n"
