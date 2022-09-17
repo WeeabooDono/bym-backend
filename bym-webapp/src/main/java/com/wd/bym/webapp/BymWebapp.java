@@ -3,8 +3,6 @@ package com.wd.bym.webapp;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.liquibase.LiquibaseProperties;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.core.env.Environment;
 
 import java.net.InetAddress;
@@ -27,7 +25,7 @@ public class BymWebapp {
 
         String serverPort = env.getProperty("server.port");
         String contextPath = env.getProperty("server.servlet.context-path");
-        if (contextPath != null && contextPath.length() != 0) {
+        if (contextPath == null || contextPath.length() == 0) {
             contextPath = "/";
         }
 
