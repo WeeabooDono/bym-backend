@@ -2,6 +2,8 @@ package com.wd.bym.batch.service.impl;
 
 import com.wd.bym.batch.exception.BatchException;
 import com.wd.bym.batch.service.BatchService;
+import com.wd.bym.batch.transform.dto.JobExecutionDTO;
+import com.wd.bym.batch.transform.mapper.JobExecutionMapper;
 import com.wd.bym.batch.utils.BatchType;
 import lombok.RequiredArgsConstructor;
 import org.springframework.batch.core.JobExecution;
@@ -24,8 +26,10 @@ public class BatchServiceImpl implements BatchService {
     private final JobLauncher jobLauncher;
     private final JobRegistry jobRegistry;
 
+    private final JobExecutionMapper mapper;
+
     @Override
-    public JobExecution executeBatch(BatchType batchType, JobParameters jobParameters) throws BatchException {
+    public JobExecutionDTO executeBatch(BatchType batchType, JobParameters jobParameters) throws BatchException {
         JobExecution jobExecution;
 
         Set<JobExecution> jobExecutions = this.jobExplorer.findRunningJobExecutions(batchType.getJobName());
@@ -34,7 +38,7 @@ public class BatchServiceImpl implements BatchService {
         }
         jobExecution = executeJob(batchType.getJobName(), jobParameters);
 
-        return jobExecution;
+        return mapper.toDTO(jobExecution);
     }
 
     private JobExecution executeJob(String jobName, JobParameters jobParameters) throws BatchException {
