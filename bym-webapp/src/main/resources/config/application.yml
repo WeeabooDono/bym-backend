@@ -1,16 +1,13 @@
 spring:
   application:
     name: BookmarkYourManga
-  jpa:
-    database: postgresql
-  datasource:
-    driver-class-name: org.postgresql.Driver
-    username: postgres
-    password: postgres
-    url: jdbc:postgresql://localhost:5432/bym
+  profiles:
+    active: core
   output:
     ansi:
       enabled: always
+  main:
+    allow-bean-definition-overriding: true
 server:
   port: 8080
   servlet:
@@ -21,3 +18,7 @@ logging:
   level:
     root: info
     com.wd.bym: info
+bym:
+  batch:
+    launcher:
+      mode: service

@@ -6,12 +6,12 @@ import com.wd.bym.core.transform.dto.MangaSaveDto;
 import com.wd.bym.core.transform.dto.pagination.PagedListDto;
 import com.wd.bym.core.transform.dto.pagination.PagerDto;
 import com.wd.bym.webapp.exception.NotFoundException;
-import javax.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.persistence.EntityNotFoundException;
 
 @RestController
 @RequiredArgsConstructor
@@ -30,7 +30,7 @@ public class MangaController {
         try {
             return ResponseEntity.ok(this.mangaService.getOne(id));
         } catch (EntityNotFoundException e) {
-            throw new NotFoundException(NotFoundException.NotFoundExceptionType.ENITITY_NOT_FOUND, e.getMessage());
+            throw new NotFoundException(NotFoundException.NotFoundExceptionType.ENTITY_NOT_FOUND, e.getMessage());
         }
     }
 
