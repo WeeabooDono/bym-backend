@@ -1,0 +1,12 @@
+spring:
+  batch:
+    job:
+      enabled: false
+    jdbc:
+      initialize-schema: always
+server:
+  port: 8888
+bym:
+  batch:
+    launcher:
+      mode: service

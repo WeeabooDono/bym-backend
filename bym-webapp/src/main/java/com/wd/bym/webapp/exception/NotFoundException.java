@@ -13,7 +13,13 @@ public class NotFoundException extends ApplicationException {
     private static final String NOT_FOUND_EXCEPTION_PREFIX = "error.server.not-found.";
 
     public enum NotFoundExceptionType implements ExceptionType {
-        ENITITY_NOT_FOUND(NOT_FOUND_EXCEPTION_PREFIX + "title", NOT_FOUND_EXCEPTION_PREFIX + "msg", NOT_FOUND_EXCEPTION_PREFIX + "cause");
+        ENTITY_NOT_FOUND(NOT_FOUND_EXCEPTION_PREFIX + "entity.title",
+                NOT_FOUND_EXCEPTION_PREFIX + "entity.msg",
+                NOT_FOUND_EXCEPTION_PREFIX + "entity.cause"),
+
+        BATCH_NOT_FOUND(NOT_FOUND_EXCEPTION_PREFIX + "batch.title",
+                NOT_FOUND_EXCEPTION_PREFIX + "batch.msg",
+                NOT_FOUND_EXCEPTION_PREFIX + "batch.cause");
 
         private final String messageKey;
         private final String titleKey;

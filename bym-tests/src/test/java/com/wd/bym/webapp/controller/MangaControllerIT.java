@@ -121,8 +121,8 @@ class MangaControllerIT extends AbstractIntegrationTest {
             mockMvc.perform(request)
                     .andExpect(status().isNotFound())
                     .andExpect(verifyExceptionType("com.wd.bym.webapp.exception.NotFoundException"))
-                    .andExpect(verifyExceptionTitle("error.server.not-found.title"))
-                    .andExpect(verifyExceptionMessage("error.server.not-found.msg"))
+                    .andExpect(verifyExceptionTitle("error.server.not-found.entity.title"))
+                    .andExpect(verifyExceptionMessage("error.server.not-found.entity.msg"))
                     .andExpect(verifyExceptionCause("Manga with id " + id + " was not found !"));
         }
     }

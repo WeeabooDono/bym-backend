@@ -2,8 +2,8 @@ package com.wd.bym.webapp.exception.handler;
 
 import com.wd.bym.webapp.exception.BadRequestException;
 import com.wd.bym.webapp.exception.NotFoundException;
+import com.wd.bym.webapp.exception.TechnicalException;
 import com.wd.bym.webapp.exception.tools.ExceptionResponse;
-import javax.validation.ConstraintViolationException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
+
+import javax.validation.ConstraintViolationException;
 
 import static com.wd.bym.webapp.exception.BadRequestException.BadRequestExceptionType.CONSTRAINT_NOT_RESPECTED;
 
@@ -51,6 +53,22 @@ public class GlobalDefaultExceptionHandler extends ResponseEntityExceptionHandle
         return this.handleExceptionInternal(ex,
                 new ExceptionResponse(ex.getTitleKey(), ex.getMessageKey(), ex),
                 new HttpHeaders(), HttpStatus.NOT_FOUND, request);
+    }
+
+    /**
+     * Handle all TechnicalException
+     *
+     * @param ex      a TechnicalException
+     * @param request the web request
+     * @return an exception response that contains the detail
+     * of the NotFoundException
+     */
+    @ExceptionHandler({TechnicalException.class})
+    public ResponseEntity<Object> handleTechnicalException(final TechnicalException ex, final WebRequest request) {
+        LOG.error(ex.getMessage(), ex);
+        return this.handleExceptionInternal(ex,
+                new ExceptionResponse(ex.getTitleKey(), ex.getMessageKey(), ex),
+                new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR, request);
     }
 
     /**

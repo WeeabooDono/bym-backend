@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: BookmarkYourManga
+  profiles:
+    active: core
+  output:
+    ansi:
+      enabled: always
+  batch:
+    job:
+      enabled: false
+    jdbc:
+      initialize-schema: always
+  main:
+    allow-bean-definition-overriding: true
+server:
+  port: 8082
+logging:
+  pattern:
+    console: "%clr(%d){cyan} [%clr(%p)] %clr(%c){magenta} - %m%n"
+  level:
+    root: info
+    com.wd.bym: info
+bym:
+  batch:
+    launcher:
+      mode: command-line

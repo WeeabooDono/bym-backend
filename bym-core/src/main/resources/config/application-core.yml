@@ -6,5 +6,3 @@ spring:
     username: postgres
     password: postgres
     url: jdbc:postgresql://localhost:5432/bym
-#  main:
-#    allow-bean-definition-overriding: true
