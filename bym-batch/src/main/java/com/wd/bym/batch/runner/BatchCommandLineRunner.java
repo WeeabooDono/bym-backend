@@ -4,11 +4,11 @@ import com.wd.bym.batch.exception.BatchException;
 import com.wd.bym.batch.exception.BatchRunException;
 import com.wd.bym.batch.exception.NoSuchBatchException;
 import com.wd.bym.batch.service.BatchService;
+import com.wd.bym.batch.transform.dto.JobExecutionDTO;
 import com.wd.bym.batch.utils.BatchCommandLineArg;
 import com.wd.bym.batch.utils.BatchType;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.batch.core.JobExecution;
 import org.springframework.batch.core.JobParameters;
 import org.springframework.batch.core.launch.support.ExitCodeMapper;
 import org.springframework.batch.core.launch.support.SimpleJvmExitCodeMapper;
@@ -46,7 +46,7 @@ public class BatchCommandLineRunner implements CommandLineRunner {
         String batchName = simpleCommandLinePropertySource.getProperty(BatchCommandLineArg.BATCH_NAME.getArgName());
         ExitCodeMapper exitCodeMapper = new SimpleJvmExitCodeMapper();
 
-        JobExecution jobExecution;
+        JobExecutionDTO jobExecution;
         try {
             if (batchName != null && batchName.length() != 0) {
                 jobExecution = this.batchService.executeBatch(BatchType.getByJobName(batchName), new JobParameters());
@@ -58,6 +58,6 @@ public class BatchCommandLineRunner implements CommandLineRunner {
         } catch (BatchException | NoSuchBatchException e) {
             throw new BatchRunException(e.getMessage(), e);
         }
-        return exitCodeMapper.intValue(jobExecution.getExitStatus().getExitCode());
+        return exitCodeMapper.intValue(jobExecution.getExitCode());
     }
 }
