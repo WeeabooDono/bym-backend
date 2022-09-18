@@ -31,9 +31,14 @@ public class BatchCommandLineRunner implements CommandLineRunner {
     private final BatchService batchService;
 
     @Override
-    public void run(String... args) throws Exception {
-        int exitCode = execute(args);
-        System.exit(SpringApplication.exit(context, () -> exitCode));
+    public void run(String... args) {
+        try {
+            int exitCode = execute(args);
+            System.exit(SpringApplication.exit(context, () -> exitCode));
+        } catch (BatchRunException e) {
+            log.error(e.getMessage(), e);
+            System.exit(SpringApplication.exit(context, () -> 1));
+        }
     }
 
     private int execute(String... args) throws BatchRunException {
