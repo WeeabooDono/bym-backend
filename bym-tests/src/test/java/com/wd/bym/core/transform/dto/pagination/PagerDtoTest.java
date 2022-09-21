@@ -28,9 +28,9 @@ class PagerDtoTest extends AbstractMockitoTest {
     public static Stream<Arguments> provideArguments() {
         return Stream.of(
                 Arguments.of(PagerDto.builder().build(),
-                        0, 0, null, Sort.DEFAULT_DIRECTION), // expectations
+                        0, 0, "id", Sort.DEFAULT_DIRECTION), // expectations
                 Arguments.of(new PagerDto(),
-                        0, 0, null, Sort.DEFAULT_DIRECTION), // expectations
+                        0, 0, "id", Sort.DEFAULT_DIRECTION), // expectations
                 Arguments.of(PagerDto.builder()
                                 .page(1)
                                 .pageSize(3)
@@ -76,7 +76,7 @@ class PagerDtoTest extends AbstractMockitoTest {
 
         assertThat(pagerDto.toPageRequest().getPageNumber()).isEqualTo(0);
         assertThat(pagerDto.toPageRequest().getPageSize()).isEqualTo(1);
-        assertThat(pagerDto.toPageRequest().getSort()).isEqualTo(Sort.unsorted());
+        assertThat(pagerDto.toPageRequest().getSort()).isEqualTo(Sort.by(new Sort.Order(Sort.DEFAULT_DIRECTION, "id")));
     }
 
     @Test
