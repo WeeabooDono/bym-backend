@@ -2,7 +2,7 @@ spring:
   application:
     name: BookmarkYourManga
   profiles:
-    active: core
+    active: core,local
   output:
     ansi:
       enabled: always
