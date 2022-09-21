@@ -2,10 +2,16 @@ spring:
   application:
     name: BookmarkYourManga
   profiles:
-    active: core,local
+    active: local
   output:
     ansi:
       enabled: always
+  jpa:
+    # Par défaut "postgresql" renseigné pour être explicite
+    database: postgresql
+  datasource:
+    # Par défaut "org.postgresql.Driver" renseigné pour être explicite
+    driver-class-name: org.postgresql.Driver
   main:
     allow-bean-definition-overriding: true
 server:
