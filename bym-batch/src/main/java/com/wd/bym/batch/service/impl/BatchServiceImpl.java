@@ -25,7 +25,6 @@ public class BatchServiceImpl implements BatchService {
     private final JobExplorer jobExplorer;
     private final JobLauncher jobLauncher;
     private final JobRegistry jobRegistry;
-
     private final JobExecutionMapper mapper;
 
     @Override
