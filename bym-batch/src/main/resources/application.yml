@@ -2,7 +2,7 @@ spring:
   application:
     name: BookmarkYourManga
   profiles:
-    active: core
+    active: core,local
   output:
     ansi:
       enabled: always
@@ -25,3 +25,7 @@ bym:
   batch:
     launcher:
       mode: command-line
+mal:
+  api-version: "v2"
+  client-header: "X-MAL-CLIENT-ID"
+  url: "https://api.myanimelist.net"

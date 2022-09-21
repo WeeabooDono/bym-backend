@@ -35,3 +35,8 @@ out/
 
 ### VS Code ###
 .vscode/
+
+### application-local.yml ###
+/bym-batch/src/main/resources/application-local.yml
+/bym-core/src/main/resources/application-local.yml
+/bym-webapp/src/main/resources/application-local.yml
