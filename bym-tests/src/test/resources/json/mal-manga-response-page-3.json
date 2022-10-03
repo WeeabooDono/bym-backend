@@ -1,0 +1,33 @@
+{
+  "data": [
+    {
+      "node": {
+        "id": 25,
+        "title": "Fullmetal Alchemist",
+        "main_picture": {
+          "medium": "https://api-cdn.myanimelist.net/images/manga/3/243675.jpg",
+          "large": "https://api-cdn.myanimelist.net/images/manga/3/243675l.jpg"
+        }
+      },
+      "ranking": {
+        "rank": 7
+      }
+    },
+    {
+      "node": {
+        "id": 4632,
+        "title": "Oyasumi Punpun",
+        "main_picture": {
+          "medium": "https://api-cdn.myanimelist.net/images/manga/3/266834.jpg",
+          "large": "https://api-cdn.myanimelist.net/images/manga/3/266834l.jpg"
+        }
+      },
+      "ranking": {
+        "rank": 8
+      }
+    }
+  ],
+  "paging": {
+    "previous": "https://api.myanimelist.net/v2/manga/ranking?offset=3&ranking_type=all&limit=3&fields=title"
+  }
+}

@@ -12,32 +12,41 @@ repositories {
 }
 
 ext {
-    set('testcontainersVersion', "1.17.3")
+    set('testcontainersVersion', '1.17.3')
     set('junitJupiterVersion', '5.4.2')
+    set('wiremockVersion', '2.34.0')
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    runtimeOnly 'org.postgresql:postgresql'
+    testImplementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    testImplementation 'org.springframework.boot:spring-boot-starter-web'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.batch:spring-batch-test'
-    implementation 'org.liquibase:liquibase-core'
-    implementation project(':bym-webapp')
-    implementation project(':bym-batch')
-    implementation project(':bym-core')
+    testImplementation 'org.liquibase:liquibase-core'
+    testRuntimeOnly 'org.postgresql:postgresql'
+
+    // modules
+    testImplementation project(':bym-webapp')
+    testImplementation project(':bym-batch')
+    testImplementation project(':bym-core')
 
     // lombok
-    compileOnly 'org.projectlombok:lombok'
-    annotationProcessor 'org.projectlombok:lombok'
+    testCompileOnly 'org.projectlombok:lombok'
+    testAnnotationProcessor 'org.projectlombok:lombok'
 
-    // testContainers
+    // junit
     testImplementation "org.junit.jupiter:junit-jupiter-api:${junitJupiterVersion}"
     testImplementation "org.junit.jupiter:junit-jupiter-params:${junitJupiterVersion}"
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitJupiterVersion}"
-    testImplementation "org.testcontainers:testcontainers"
-    testImplementation "org.testcontainers:junit-jupiter"
-    testImplementation "org.testcontainers:postgresql"
+
+    // testContainers
+    testImplementation 'org.testcontainers:testcontainers'
+    testImplementation 'org.testcontainers:junit-jupiter'
+    testImplementation 'org.testcontainers:postgresql'
+    testImplementation 'org.testcontainers:mockserver'
+
+    // wiremock
+    testImplementation "com.github.tomakehurst:wiremock-jre8:${wiremockVersion}"
 }
 
 dependencyManagement {

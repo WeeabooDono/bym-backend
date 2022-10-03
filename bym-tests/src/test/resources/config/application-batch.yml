@@ -5,8 +5,14 @@ spring:
     jdbc:
       initialize-schema: always
 server:
-  port: 8888
+  port: 8080
 bym:
   batch:
     launcher:
       mode: service
+mal:
+  api-version: "v1"
+  client-header: "X-MAL-CLIENT-ID-TEST"
+  # url placeholder, will be overrided in tests to use test containers mockserver
+  url: "https://api.myanimelist-test.net"
+  client-id: 'custom-client-id-1234'
