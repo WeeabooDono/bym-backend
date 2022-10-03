@@ -1,7 +1,10 @@
 package com.wd.bym.batch.job.MmlMangaRetriever;
 
+import com.wd.bym.batch.domain.MalMangaResponse;
 import com.wd.bym.batch.job.MmlMangaRetriever.condition.MmlMangaRetrieverJobLaunchCondition;
-import com.wd.bym.batch.job.MmlMangaRetriever.reader.MalMangaItemReader;
+import com.wd.bym.batch.job.MmlMangaRetriever.processor.MalMangaResponseProcessor;
+import com.wd.bym.batch.job.MmlMangaRetriever.reader.MalMangaPageItemReader;
+import com.wd.bym.batch.job.MmlMangaRetriever.writer.MalMangaPageItemWriter;
 import com.wd.bym.batch.job.common.CustomJobExecutionListener;
 import com.wd.bym.batch.job.common.CustomStepExecutionListener;
 import com.wd.bym.batch.service.MalService;
@@ -14,8 +17,9 @@ import org.springframework.batch.core.Step;
 import org.springframework.batch.core.StepExecutionListener;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
+import org.springframework.batch.item.ItemProcessor;
 import org.springframework.batch.item.ItemReader;
-import org.springframework.batch.item.database.JpaItemWriter;
+import org.springframework.batch.item.ItemWriter;
 import org.springframework.batch.repeat.RepeatStatus;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Conditional;
@@ -23,6 +27,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
 
 import javax.persistence.EntityManagerFactory;
+import java.util.List;
+
+import static com.wd.bym.batch.utils.MalUtils.defaultMalRequest;
 
 @Configuration
 @Conditional(MmlMangaRetrieverJobLaunchCondition.class)
@@ -51,14 +58,14 @@ public class MmlMangaRetrieverJobConfiguration {
                 .build();
     }
 
-    @Bean Step getMangaStep() {
-        var writer = new JpaItemWriter<>();
-        writer.setEntityManagerFactory(entityManagerFactory);
+    @Bean
+    public Step getMangaStep() {
         return this.stepBuilderFactory.get("getMangaStep")
                 .listener(stepExecutionListener())
-                .<Manga, Manga>chunk(0)
+                .<MalMangaResponse, List<Manga>>chunk(0)
                 .reader(itemReader())
-                .writer(writer)
+                .processor(processor())
+                .writer(itemWriter())
                 .build();
     }
 
@@ -78,7 +85,17 @@ public class MmlMangaRetrieverJobConfiguration {
     }
 
     @Bean
-    public ItemReader<Manga> itemReader() {
-        return new MalMangaItemReader(malService);
+    public ItemReader<MalMangaResponse> itemReader() {
+        return new MalMangaPageItemReader(malService, defaultMalRequest());
+    }
+
+    @Bean
+    public ItemProcessor<MalMangaResponse, List<Manga>> processor() {
+        return new MalMangaResponseProcessor();
+    }
+
+    @Bean
+    public ItemWriter<List<Manga>> itemWriter() {
+        return new MalMangaPageItemWriter(entityManagerFactory);
     }
 }

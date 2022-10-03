@@ -3,5 +3,5 @@ databaseChangeLog:
       file: "db/changelog/0.0.1-SNAPSHOT/schema/0.0.1-SNAPSHOT_schema.yaml"
 #  - include:
 #      file: "db/changelog/0.0.1-SNAPSHOT/schema/0.0.1-SNAPSHOT_constraints.yaml"
-  - include:
-      file: "db/changelog/0.0.1-SNAPSHOT/data/0.0.1-SNAPSHOT_data.yaml"
+#  - include:
+#      file: "db/changelog/0.0.1-SNAPSHOT/data/0.0.1-SNAPSHOT_data.yaml"

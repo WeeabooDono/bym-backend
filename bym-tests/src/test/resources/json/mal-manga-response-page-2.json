@@ -1,0 +1,47 @@
+{
+  "data": [
+    {
+      "node": {
+        "id": 656,
+        "title": "Vagabond",
+        "main_picture": {
+          "medium": "https://api-cdn.myanimelist.net/images/manga/1/259070.jpg",
+          "large": "https://api-cdn.myanimelist.net/images/manga/1/259070l.jpg"
+        }
+      },
+      "ranking": {
+        "rank": 4
+      }
+    },
+    {
+      "node": {
+        "id": 1,
+        "title": "Monster",
+        "main_picture": {
+          "medium": "https://api-cdn.myanimelist.net/images/manga/3/258224.jpg",
+          "large": "https://api-cdn.myanimelist.net/images/manga/3/258224l.jpg"
+        }
+      },
+      "ranking": {
+        "rank": 5
+      }
+    },
+    {
+      "node": {
+        "id": 51,
+        "title": "Slam Dunk",
+        "main_picture": {
+          "medium": "https://api-cdn.myanimelist.net/images/manga/2/258749.jpg",
+          "large": "https://api-cdn.myanimelist.net/images/manga/2/258749l.jpg"
+        }
+      },
+      "ranking": {
+        "rank": 6
+      }
+    }
+  ],
+  "paging": {
+    "previous": "https://api.myanimelist.net/v2/manga/ranking?offset=0&ranking_type=all&limit=3&fields=title",
+    "next": "https://api.myanimelist.net/v2/manga/ranking?offset=6&ranking_type=all&limit=3&fields=title"
+  }
+}
